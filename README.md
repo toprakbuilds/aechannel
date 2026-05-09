@@ -1,4 +1,5 @@
-```src/main/java/me/toprakbuilds/aechannel/
+```
+src/main/java/me/toprakbuilds/aechannel/
 ├── AEChannel.java         <-- Ana sınıf, eklentinin kalbi ve başlatıcı.
 ├── AutoBroadcast.java     <-- Belirli aralıklarla otomatik duyuru yapan sistem.
 ├── ChatListener.java      <-- Sohbeti dinleyen, filtreleyen ve mentionları yöneten kısım.
