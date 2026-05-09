@@ -5,6 +5,8 @@ api-version: '1.21'
 commands:
   sustur:
     description: Oyuncuyu susturur.
+  sustur-ac:
+    description: Oyuncunun susturmasını açar.
   chatsustur:
     description: Sohbeti susturur.
   all-global:

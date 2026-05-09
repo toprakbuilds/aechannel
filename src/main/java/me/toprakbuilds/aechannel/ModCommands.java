@@ -11,12 +11,28 @@ public class ModCommands implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.hasPermission("aechannel.moderator")) return true;
+        if (!sender.hasPermission("aechannel.moderator")) {
+            sender.sendMessage(plugin.color("&cBu komut için yetkin yok!"));
+            return true;
+        }
 
-        if (cmd.getName().equalsIgnoreCase("sustur")) {
+        // --- ALIAS SİSTEMİ BAŞLANGIÇ ---
+        String cmdName = cmd.getName().toLowerCase();
+        // Config içindeki 'aliases' bölümünü kontrol eder, eğer label bir takma ad ise ana komuta çevirir.
+        if (plugin.getConfig().getConfigurationSection("aliases") != null) {
+            for (String alias : plugin.getConfig().getConfigurationSection("aliases").getKeys(false)) {
+                if (label.equalsIgnoreCase(alias)) {
+                    cmdName = plugin.getConfig().getString("aliases." + alias).toLowerCase();
+                    break;
+                }
+            }
+        }
+        // --- ALIAS SİSTEMİ BİTİŞ ---
+
+        if (cmdName.equals("sustur")) {
             if (args.length < 3) { sender.sendMessage(plugin.color("&cKullanım: /sustur <oyuncu> <saniye> <neden>")); return true; }
             Player target = Bukkit.getPlayer(args[0]);
-            if (target == null) return true;
+            if (target == null) { sender.sendMessage(plugin.color("&cOyuncu aktif değil.")); return true; }
 
             long duration = Long.parseLong(args[1]);
             String reason = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
@@ -27,32 +43,28 @@ public class ModCommands implements CommandExecutor, TabCompleter {
             plugin.getDb().save(target.getUniqueId(), s);
 
             sender.sendMessage(plugin.color("&a" + target.getName() + " susturuldu."));
+            target.sendMessage(plugin.color("&c" + reason + " sebebiyle susturuldun!"));
 
             if (plugin.getConfig().getBoolean("discord-log-enabled")) {
-                String webhook = plugin.getDiscordConfig().getString("channels.mute");
-                String format = plugin.getDiscordConfig().getString("messages.mute-format")
-                        .replace("%staff%", sender.getName())
-                        .replace("%target%", target.getName())
-                        .replace("%reason%", reason);
-                DiscordWebhook.send(webhook, format);
+                DiscordWebhook.send(plugin.getDiscordConfig().getString("channels.mute"), "🚫 **[MUTE]** " + sender.getName() + " -> " + target.getName() + " | Sebep: " + reason);
             }
         }
-        else if (cmd.getName().equalsIgnoreCase("sustur-ac")) {
-            if (args.length < 1) return true;
+        else if (cmdName.equals("sustur-ac")) {
+            if (args.length < 1) { sender.sendMessage(plugin.color("&cKullanım: /sustur-ac <oyuncu>")); return true; }
             Player target = Bukkit.getPlayer(args[0]);
-            if (target == null) return true;
+            if (target == null) { sender.sendMessage(plugin.color("&cOyuncu bulunamadı.")); return true; }
 
             PlayerSettings s = plugin.getSettings(target);
             s.muteEnd = 0;
-            s.warnCount = 0;
             plugin.getDb().save(target.getUniqueId(), s);
-            sender.sendMessage(plugin.color("&aCezası kaldırıldı."));
+            sender.sendMessage(plugin.color("&a" + target.getName() + " kişisinin cezası kaldırıldı."));
+            target.sendMessage(plugin.color("&aSusturman kaldırıldı, artık konuşabilirsin."));
 
             if (plugin.getConfig().getBoolean("discord-log-enabled")) {
                 DiscordWebhook.send(plugin.getDiscordConfig().getString("channels.mute"), "🔓 **[UNMUTE]** " + sender.getName() + " -> " + target.getName());
             }
         }
-        else if (cmd.getName().equalsIgnoreCase("chatsustur")) {
+        else if (cmdName.equals("chatsustur")) {
             if (args.length > 0 && args[0].equalsIgnoreCase("ac")) {
                 plugin.setChatLocked(false, "");
                 Bukkit.broadcastMessage(plugin.color("&aSohbet kilidi açıldı!"));
@@ -62,12 +74,16 @@ public class ModCommands implements CommandExecutor, TabCompleter {
                 Bukkit.broadcastMessage(plugin.color("&cSohbet kilitlendi! Sebep: " + reason));
             }
         }
+        else if (cmdName.equals("aereload")) {
+            plugin.reloadConfig();
+            sender.sendMessage(plugin.color("&aAEChannel ayarları yenilendi!"));
+        }
         return true;
     }
 
     @Override
     public List<String> onTabComplete(CommandSender s, Command c, String a, String[] args) {
-        if (args.length == 1 && c.getName().equals("chatsustur")) return Collections.singletonList("ac");
+        if (args.length == 1 && c.getName().equalsIgnoreCase("chatsustur")) return Collections.singletonList("ac");
         return null;
     }
 }

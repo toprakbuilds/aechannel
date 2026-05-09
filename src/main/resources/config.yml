@@ -5,6 +5,14 @@
 #  \__\___/| .__/|_|  \__,_|\__,_|\__\___||___/
 #          |_|  github.com/toprakbuilds
 # ==========================================================
+# Komut Takma Adları (Alias)
+# Sol tarafa yazılacak komutu, sağ tarafa ise ana komutu yaz.
+aliases:
+  bağır: "globalmesaj"
+  pazar: "ticaretmesaj"
+  fısılda: "msg"
+  cevapla: "reply"
+  yenile: "aereload"
 
 # Sistem tarafından taranacak WorldGuard bölge isimleri.
 active-regions:

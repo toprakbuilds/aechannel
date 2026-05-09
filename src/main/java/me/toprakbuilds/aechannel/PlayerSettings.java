@@ -2,7 +2,7 @@ package me.toprakbuilds.aechannel;
 
 public class PlayerSettings {
     // Veritabanı ve Kanal Ayarları
-    public boolean allGlobal = false;
+    public boolean allGlobal = false; // İsmi bu şekilde sabitledik
     public boolean seeGlobal = true;
     public boolean seeTrade = true;
 
@@ -26,11 +26,9 @@ public class PlayerSettings {
     }
 
     public void checkReset() {
-        // 24 saat geçtiyse uyarı sayısını sıfırla
         if (System.currentTimeMillis() - lastWarnTime > 86400000L) {
             warnCount = 0;
         }
-        // Mute süresi dolduysa sebebi temizle
         if (!isMuted()) {
             muteReason = "";
         }
