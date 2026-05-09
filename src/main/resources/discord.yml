@@ -1,0 +1,16 @@
+# ==========================================================
+#                AEChannel DISCORD LOG AYARLARI
+# ==========================================================
+# Not: Aynı kanala gitmesini istediklerine aynı linki yapıştır.
+
+channels:
+  chat: "WEBHOOK_LINK_BURAYA"         # Genel sohbet mesajları
+  mute: "WEBHOOK_LINK_BURAYA"         # Susturma işlemleri
+  warn: "WEBHOOK_LINK_BURAYA"         # Küfür/Spam uyarıları
+  private-msg: "WEBHOOK_LINK_BURAYA"  # Özel mesajlar (Log amaçlı)
+
+messages:
+  chat-format: "**[CHAT]** %player%: %message%"
+  mute-format: "🚫 **[MUTE]** %staff% adlı yetkili %target% oyuncusunu susturdu. Sebep: %reason%"
+  warn-format: "⚠️ **[WARN]** %player% otomatik uyarıldı. Uyarı Sayısı: %count%"
+  pm-format: "📩 **[PM]** %from% -> %to%: %message%"

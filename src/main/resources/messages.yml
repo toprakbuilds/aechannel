@@ -1,0 +1,32 @@
+# ==========================================================
+#                  AEChannel MESAJ DOSYASI
+# ==========================================================
+
+# Sistem Mesajları
+reload: "&a[AEChannel] &fEklenti ve tüm yapılandırmalar başarıyla yenilendi!"
+chat-locked: "&cChat şu an kapalı! Sebep: &f%reason%"
+player-muted: "&cSusturuldun! Kalan süre: &e%seconds% saniye."
+
+# Koruma Uyarıları
+spam-warn: "&c[!] Çok hızlı mesaj gönderiyorsun, biraz bekle!"
+repeat-warn: "&c[!] Aynı mesajı tekrar gönderemezsin!"
+unicode-warn: "&c[!] Mesajında geçersiz karakterler/semboller var!"
+caps-warn: "&c[!] Çok fazla büyük harf kullanma, lütfen sakin ol."
+
+# Özel Mesaj (DM) Formatı
+pm-format-to: "&8[&bBen &3-> &b%player%&8] &f%message%"
+pm-format-from: "&8[&b%player% &3-> &bBen&8] &f%message%"
+
+# Kanal Durumları
+all-global-on: "&a[!] Artık yazdığın her şey global kanala gidecek."
+all-global-off: "&e[!] Yerel sohbete geri döndün."
+global-visibility-on: "&aGlobal mesajlar artık görünür."
+global-visibility-off: "&cGlobal mesajları gizledin."
+trade-visibility-on: "&6Ticaret mesajları artık görünür."
+trade-visibility-off: "&cTicaret mesajlarını gizledin."
+
+# Küfür Cezası Mesajları
+kufur-warn-1: "&c[!] Küfür yasaktır! İlk uyarın verildi, lütfen dikkat et."
+kufur-warn-2: "&c[!] 2. uyarı! 1 dakika boyunca susturuldun."
+kufur-warn-3: "&c[!] 3. uyarı! 10 dakika boyunca susturuldun."
+kufur-warn-final: "&c[!] Israrlı küfür kullanımı nedeniyle 1 saat susturuldun."

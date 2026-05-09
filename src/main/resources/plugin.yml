@@ -1,0 +1,21 @@
+name: AEChannel
+version: 2.1.1
+main: me.toprakbuilds.aechannel.AEChannel
+api-version: '1.21'
+commands:
+  sustur:
+    description: Oyuncuyu susturur.
+  chatsustur:
+    description: Sohbeti susturur.
+  all-global:
+    description: Global modu açar.
+  globalmesaj:
+    description: Global mesaj gönderir.
+  ticaretmesaj:
+    description: Ticaret mesajı gönderir.
+  msg:
+    description: Özel mesaj gönderir.
+  reply:
+    description: Son mesaja cevap verir.
+  aereload:
+    description: Eklentiyi yeniler.

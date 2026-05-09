@@ -1,0 +1,48 @@
+#  _                      _         _
+# | |_ ___  _ __  _ __ __| | ____ _| |_ ___  ___
+# | __/ _ \| '_ \| '__/ _` |/ _` | __/ _ \/ __|
+# | || (_) | |_) | | | (_| | (_| | ||  __/\__ \
+#  \__\___/| .__/|_|  \__,_|\__,_|\__\___||___/
+#          |_|  github.com/toprakbuilds
+# ==========================================================
+
+# Sistem tarafından taranacak WorldGuard bölge isimleri.
+active-regions:
+  - "market"
+  - "orman"
+  - "spawn"
+
+settings:
+  # Genel Ayarlar
+  use-per-region-tags: true
+  use-luckperms: true
+
+  # Sohbet Korumaları
+  chat-cooldown: 2000    # Mesaj gönderme sınırı (Milisaniye: 2000 = 2sn)
+  anti-unicode: true     # Garip sembolleri engeller
+  grammar: true          # Cümle başını büyütür, sonuna nokta koyar
+  caps-limit: 0.7        # Büyük harf oranı (%70)
+  proximity-range: 100.0 # Yerel sohbet mesafesi
+
+# Otomatik Duyuru Sistemi (Auto-Broadcast)
+announcements:
+  prefix: "&8[&bDUYURU&8]&f"
+  interval: 300          # Kaç saniyede bir duyuru geçsin? (300 = 5dk)
+  actionbar: true        # Aynı zamanda action barda da görünsün mü?
+  messages:
+    - "&eSunucumuzda küfür etmek yasaktır, lütfen kurallara uyunuz."
+    - "&bDiscord adresimize katılmayı unutmayın! &f/discord"
+    - "&6Ticaret yapmak için mesajınızın başına &f. &6koyun."
+
+# Sohbet kanalları için görünüm ayarları.
+tags:
+  global: "&8[&bGLOBAL&8] &f"
+  ticaret: "&8[&6TİCARET&8] &f"
+  proximity: "&8[&7Yakın&8] &7"
+  local: "&8[&a%region%&8] &f"
+  per-region-tags:
+    market: "&8[&eMarket-Ağası&8] &f"
+    orman: "&8[&2Vahşi-Doğa&8] &f"
+    spawn: "&8[&bBaşlangıç&8] &f"
+
+# Not: Diğer tüm sistem mesajları artık 'messages.yml' içerisinden yönetilir.

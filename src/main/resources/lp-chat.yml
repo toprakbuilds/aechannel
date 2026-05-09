@@ -1,0 +1,13 @@
+# LuckPerms Grup Formatları
+# Not: Buradaki grup isimleri LuckPerms'teki grup isimleriyle birebir aynı olmalıdır.
+# Öncelik sırası: Eğer bir oyuncu birden fazla gruptaysa, listede üstte olanın formatını alır.
+
+groups:
+  admin:
+    format: "&c[Admin] &f%prefix%%player%&8: &e%message%"
+    hover: "&bBu bir yetkilidir.\n&eTıklayarak özel mesaj gönder!"
+    click: "/msg %player% "
+  default:
+    format: "&7%prefix%%player%&8: &f%message%"
+    hover: "&7Oyuncu profili için tıkla."
+    click: "/stats %player%"
